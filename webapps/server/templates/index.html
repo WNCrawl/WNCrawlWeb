@@ -1,0 +1,124 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>云采集</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+
+    .btn {
+        display: block;
+        color: white;
+        text-decoration: none;
+        width: 85%;
+        height: 40px;
+        background-color: #1890ff;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 4px;
+        position: relative;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    input {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        position: relative;
+        display: inline-block;
+        padding: 4px 11px;
+        height: 32px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: rgba(0, 0, 0, 0.65);
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        transition: all .3s;
+    }
+
+    .box {
+        width: 85%;
+        position: relative;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    span {
+        display: flex;
+        align-items: center;
+    }
+</style>
+<body>
+<div>
+    <div class="box">
+        <h2>输入短信验证码</h2>
+        <p>渠道：{{ channel_name }}</p>
+        <p>平台：{{ platform_name }}</p>
+        <p>账号：{{ account_name }}</p>
+        <span>
+        <a>短信验证码:&nbsp;</a>
+        <input id="val"/>
+    </span>
+    </div>
+
+    <a class="btn" href="javascript:;" onclick="submit()">提交验证码</a>
+</div>
+
+<script>
+
+    var channel_id = '';
+    var platform_id = '';
+    var account = '';
+    window.onload = function () {
+        console.log('loaded')
+        var href = window.location.href;
+        var item = href.split('?')[1].split('&');
+        for (var i = 0; i < item.length; i++) {
+            if (item[i].split('=')[0] === 'channel_id') {
+                channel_id = item[i].split('=')[1]
+            } else if (item[i].split('=')[0] === 'platform_id') {
+                platform_id = item[i].split('=')[1]
+            } else if (item[i].split('=')[0] === 'account_name') {
+                account_name = item[i].split('=')[1]
+            }
+        }
+    }
+
+    function submit() {
+
+        var value = document.getElementById('val').value;
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                if (JSON.parse(xhr.responseText).result) {
+                    alert('发送成功')
+                } else {
+                    alert('发送失败')
+                }
+            }
+        }
+
+        xhr.open('post', '/api/wechat/report_sns', true);
+        var p = {
+            code: value,
+            channel_id: channel_id,
+            platform_id: platform_id,
+            account_name: account_name
+        };
+        console.log(p)
+        xhr.send(JSON.stringify(p))
+    }
+
+</script>
+
+</body>
+</html>

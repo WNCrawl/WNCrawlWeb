@@ -1,0 +1,14 @@
+from os.path import join
+from apps.crawl.parser import get_start_requests, get_follow_requests_and_items, detect_project_spiders
+import json
+
+
+def parse(*args):
+    project_path = join(args.dir, args.project)
+    if args.start:
+        results = get_start_requests(project_path, args.spider)
+    else:
+        results = get_follow_requests_and_items(project_path, args.spider, args)
+    print(json.dumps(results, ensure_ascii=False))
+
+
