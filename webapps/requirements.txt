@@ -22,7 +22,7 @@ Django==2.1.1
 django-apscheduler==0.2.13
 django-cors-headers==2.4.0
 django-mysql==2.4.1
-djangorestframework==3.8.2
+djangorestframework==3.11.2
 DtCrawlEngine==1.2.6
 enum-compat==0.0.2
 et-xmlfile==1.0.1
