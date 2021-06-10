@@ -18,7 +18,7 @@ cryptography==2.3.1
 cssselect==1.0.3
 cx-Oracle==7.0.0
 decorator==4.3.0
-Django==2.1.1
+Django==2.2.24
 django-apscheduler==0.2.13
 django-cors-headers==2.4.0
 django-mysql==2.4.1
