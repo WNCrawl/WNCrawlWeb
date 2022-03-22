@@ -42,7 +42,7 @@ kaitaistruct==0.8
 ldap3==2.5.1
 lxml==4.2.5
 MarkupSafe==1.0
-mitmproxy==4.0.4
+mitmproxy==8.0.0
 mysql-connector-python==8.0.12
 numpy==1.15.2
 opencv-python==3.4.3.18
