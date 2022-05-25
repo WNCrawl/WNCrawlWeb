@@ -61,7 +61,7 @@ pycparser==2.18
 pycryptodome==3.6.6
 PyDispatcher==2.0.5
 PyHamcrest==1.9.0
-PyJWT==1.6.4
+PyJWT==2.4.0
 pymongo==3.7.1
 PyMySQL==0.9.2
 pyOpenSSL==18.0.0
