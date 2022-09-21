@@ -69,7 +69,7 @@ pyparsing==2.2.0
 pyperclip==1.6.4
 pyquery==1.4.0
 python-dateutil==2.7.3
-python-jwt==3.2.3
+python-jwt==3.3.4
 python-scrapyd-api==2.1.2
 pytz==2018.5
 queuelib==1.5.0
